@@ -1255,6 +1255,7 @@ public:
      */
     RT_REMOVE(  virtual CCAffineTransform nodeToParentTransform(void);          )
     RT_ADD(     virtual const CCAffineTransform nodeToParentTransform(void);    )
+    RT_ADD(     virtual const CCAffineTransform nodeToParentTransformFast();    )
 
     /** 
      * Returns the matrix that transform parent's space coordinates to the node's (local) space coordinates.
@@ -1267,6 +1268,7 @@ public:
      * Returns the world affine transform matrix. The matrix is in Pixels.
      */
     virtual CCAffineTransform nodeToWorldTransform(void);
+    RT_ADD(virtual CCAffineTransform nodeToWorldTransformFast();)
 
     /** 
      * Returns the inverse world affine transform matrix. The matrix is in Pixels.
@@ -1395,6 +1397,8 @@ public:
         virtual void updateTweenAction(float, const char*);
 
         CCNode& operator=(const CCNode&);
+
+        virtual void updateTweenActionInt(float, int);
     )
 
 private:
@@ -1440,8 +1444,8 @@ protected:
     CCCamera *m_pCamera;                ///< a camera
     
     CCGridBase *m_pGrid;                ///< a grid
-    
-    int m_nZOrder;                      ///< z-order value that affects the draw order
+
+    RT_REMOVE(  int m_nZOrder; )          ///< z-order value that affects the draw order
     
     CCArray *m_pChildren;               ///< array of children nodes
     CCNode *m_pParent;                  ///< weak reference to parent node
@@ -1454,8 +1458,8 @@ protected:
     CCGLProgram *m_pShaderProgram;      ///< OpenGL shader
     
     ccGLServerState m_eGLServerState;   ///< OpenGL servier side state
-    
-    unsigned int m_uOrderOfArrival;     ///< used to preserve sequence while sorting children with the same zOrder
+
+    RT_REMOVE(  unsigned int m_uOrderOfArrival; )     ///< used to preserve sequence while sorting children with the same zOrder
     
     CCScheduler *m_pScheduler;          ///< scheduler used to schedule timers and updates
     
@@ -1466,6 +1470,9 @@ protected:
     bool m_bTransformDirty;             ///< transform dirty flag
     bool m_bInverseDirty;               ///< transform dirty flag
     bool m_bAdditionalTransformDirty;   ///< The flag to check whether the additional transform is dirty
+
+    PAD(10);
+
     bool m_bVisible;                    ///< is this node visible
     
     bool m_bIgnoreAnchorPointForPosition; ///< true if the Anchor Point will be (0,0) when you position the CCNode, false otherwise.
@@ -1479,6 +1486,7 @@ protected:
     
     CCComponentContainer *m_pComponentContainer;        ///< Dictionary of components
 
+    int m_unknown;
 };
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
