@@ -98,7 +98,7 @@ public:
      *  @js NA
      *  @lua NA
      */
-    virtual bool initWithTotalParticles(unsigned int numberOfParticles);
+    virtual bool initWithTotalParticles(unsigned int numberOfParticles, bool a2);
     /**
      * @js NA
      */

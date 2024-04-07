@@ -67,21 +67,9 @@ public:
 };
 
 /**
- * This class is used to fix the problem of destructor recursion.
- */
-class CCDestructor : public CCCopying {
-private:
-    static std::unordered_map<void*, bool>& destructorLock();
-public:
-    static bool& globalLock();
-    static bool& lock(void* self);
-    ~CCDestructor();
-};
-
-/**
  * @js NA
  */
-class CC_DLL CCObject : public CCDestructor
+class CC_DLL CCObject : public CCCopying
 {
 public:
     // object id, CCScriptSupport need public m_uID
