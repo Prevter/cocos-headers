@@ -384,7 +384,6 @@ public:
     
     static CCLayerGradient* create();
 
-protected:
     virtual void updateColor();
 };
 

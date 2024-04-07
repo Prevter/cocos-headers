@@ -392,7 +392,7 @@ public:
     static CCParticleSystem * create(const char *plistFile);
 
     //! create a system with a fixed number of particles
-    static CCParticleSystem* createWithTotalParticles(unsigned int numberOfParticles);
+    static CCParticleSystem* createWithTotalParticles(unsigned int numberOfParticles, bool a2);
 
     /** initializes a CCParticleSystem*/
     bool init();
@@ -414,7 +414,7 @@ public:
     bool initWithDictionary(CCDictionary *dictionary, const char *dirname);
 
     //! Initializes a system with a fixed number of particles
-    virtual bool initWithTotalParticles(unsigned int numberOfParticles);
+    virtual bool initWithTotalParticles(unsigned int numberOfParticles, bool a2);
     //! Add a particle to the emitter
     bool addParticle();
     //! Initializes a particle

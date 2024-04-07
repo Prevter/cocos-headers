@@ -57,7 +57,7 @@ public:
     /**
     @brief Dispatches the input text from IME.
     */
-    void dispatchInsertText(const char * pText, int nLen);
+    void dispatchInsertText(const char * pText, int nLen, enumKeyCodes keyCode);
 
     /**
     @brief Dispatches the delete-backward operation.
