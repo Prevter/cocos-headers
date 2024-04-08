@@ -205,6 +205,7 @@ private:
     
     int m_nTouchPriority;
     ccTouchesMode m_eTouchMode;
+	int m_uPreviousPriority;
     
     int  excuteScriptTouchHandler(int nEventType, CCTouch *pTouch);
     int  excuteScriptTouchHandler(int nEventType, CCSet *pTouches);
