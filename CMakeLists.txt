@@ -14,7 +14,16 @@ target_include_directories(cocos2d INTERFACE
   extensions
 )
 
-target_link_libraries(cocos2d INTERFACE
-  ${CMAKE_CURRENT_LIST_DIR}/cocos2dx/libcocos2d.lib
-  ${CMAKE_CURRENT_LIST_DIR}/extensions/libExtensions.lib
-)
+if (CMAKE_SIZEOF_VOID_P EQUAL 8)
+    target_link_libraries(cocos2d INTERFACE
+        ${CMAKE_CURRENT_LIST_DIR}/cocos2dx/libcocos2d.lib
+        ${CMAKE_CURRENT_LIST_DIR}/extensions/libExtensions.lib
+    )
+else()
+    target_link_libraries(cocos2d INTERFACE
+        ${CMAKE_CURRENT_LIST_DIR}/cocos2dx/libcocos2d32.lib
+        ${CMAKE_CURRENT_LIST_DIR}/extensions/libExtensions32.lib
+    )
+endif()
+
+
